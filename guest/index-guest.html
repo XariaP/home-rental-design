@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Winter 2023 Project - Restify (Updated)">
+    <meta name="author" content="Xaria Prempeh">
+    <title>Restify - Rental Service</title>
+    <!-- <link href="../styles/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> -->
+    <link rel="icon" href="../icons/restify-favicon.svg" type="image/svg+xml">
+    <link href="../styles/layout.css" rel="stylesheet">
+    
+  </head>
+  
+  <body id="page-container"> 
+    <div id="content-wrap">
+      <!-- Navigation Bar -->
+      <header class="bar sticky-top">
+        <div class="px-3 py-2">
+          <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+              <a href="index-guest.html" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                <img src="../icons/restify-logo.svg" width="100px">
+                <p class="logo"> Restify </p>
+              </a>
+
+              <ul id="nav-button-list" class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Notification Pop Up -->
+      <div class="modal fade" id="notiModal" tabindex="-1" aria-labelledby="notiModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header bar">
+              <img class="modal-icon" src="../icons/mail.svg">
+              <h1 class="modal-title fs-5" id="notiModalLabel">My Notifications</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- Example Notification Code -->
+              <div class="list-group list-group-flush border-bottom scrollarea">
+                <a href="reservations.html" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
+                  <div class="d-flex w-100 align-items-center justify-content-between">
+                    <strong class="mb-1">Reservation Approved!</strong>
+                    <small>Today</small>
+                  </div>
+                  <div class="col-10 mb-1 small">Your reservation for House in Toronto, Canada has been approved!</div>
+                </a>
+                <a href="reservations.html#pending-reservations" class="list-group-item list-group-item-action py-3 lh-sm">
+                  <div class="d-flex w-100 align-items-center justify-content-between">
+                    <strong class="mb-1">Reservation request pending</strong>
+                    <small class="text-end">2 days ago</small>
+                  </div>
+                  <div class="col-10 mb-1 small">Your reservation is under review. Please wait 3-4 days for approval.</div>
+                </a>
+              </div>
+            </div>
+            <!-- <div class="modal-footer">
+              <span>Showing most recent</span>
+              <a type="button" class="btn btn-primary bar" href="notifications.html">View All</a>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <main class="content">
+        <section class="py-5 text-center container">
+          <div class="row">
+            <div class="col-lg-6 col-md-8 mx-auto">
+              <h1 class="fw-light">Rental Search</h1>
+              <p>
+                <a class="btn btn-primary my-2" data-bs-toggle="collapse" href="#filterForm" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  Filter/Sort
+                </a>
+              </p>
+              
+              <form>
+                <div class="collapse mb-3" id="filterForm">  
+                  <div class="card card-body">
+                    <h4>Filter by</h4>
+                    <div class="input-group mb-3">
+                      <label class="input-group-text btn-blue" for="inputGroupSelect01">Location</label>
+                      <select class="form-select" id="inputGroupSelect01">
+                        <option selected>Any</option>
+                        <option value="1">Toronto, Canada</option>
+                        <option value="2">Houston, Texas</option>
+                        <option value="3">Montreal, Canada</option>
+                      </select>
+                    </div>
+
+                    <label for="customRange2" class="form-label filter-label mt-3">Number of Guests</label>
+                    <div class="mb-3">
+                      <input type="radio" class="btn-check" name="numguests" id="guest0" checked>
+                      <label class="btn btn-outline-primary" for="guest0">Any</label>
+                      <input type="radio" class="btn-check" name="numguests" id="guest1">
+                      <label class="btn btn-outline-primary" for="guest1">1</label>
+                      <input type="radio" class="btn-check" name="numguests" id="guest2">
+                      <label class="btn btn-outline-primary" for="guest2">2</label>
+                      <input type="radio" class="btn-check" name="numguests" id="guest3">
+                      <label class="btn btn-outline-primary" for="guest3">3</label>
+                      <input type="radio" class="btn-check" name="numguests" id="guest4">
+                      <label class="btn btn-outline-primary" for="guest4">4+</label>
+                    </div>
+
+                    <label class="form-label filter-label mt-3"> Ammenities Included (Select all that apply)</label>
+                    <div class="row g-3 mb-3 justify-content-center">
+                      <div class="col-auto">
+                        <input type="checkbox" class="btn-check" id="btn-check-outlined">
+                        <label class="btn btn-outline-primary" for="btn-check-outlined">Hot Water</label>
+                      </div>
+                      <div class="col-auto">
+                        <input type="checkbox" class="btn-check" id="btn-check-2-outlined">
+                        <label class="btn btn-outline-primary" for="btn-check-2-outlined">Air conditioning</label>
+                      </div>
+                      <div class="col-auto">
+                        <input type="checkbox" class="btn-check" id="btn-check-3-outlined">
+                        <label class="btn btn-outline-primary" for="btn-check-3-outlined">Heater</label>
+                      </div>
+                      <div class="col-auto">
+                        <input type="checkbox" class="btn-check" id="btn-check-4-outlined">
+                        <label class="btn btn-outline-primary" for="btn-check-4-outlined">Wifi</label>
+                      </div>
+                      <div class="col-auto">
+                        <input type="checkbox" class="btn-check" id="btn-check-5-outlined">
+                        <label class="btn btn-outline-primary" for="btn-check-5-outlined">Free Parking</label>
+                      </div>
+                      <div class="col-auto">
+                        <input type="checkbox" class="btn-check" id="btn-check-6-outlined">
+                        <label class="btn btn-outline-primary" for="btn-check-6-outlined">TV</label>
+                      </div>
+                      <div class="col-auto">
+                        <input type="checkbox" class="btn-check" id="btn-check-7-outlined">
+                        <label class="btn btn-outline-primary" for="btn-check-7-outlined">Backyard</label>
+                      </div>
+                      <div class="col-auto">
+                        <input type="checkbox" class="btn-check" id="btn-check-8-outlined">
+                        <label class="btn btn-outline-primary" for="btn-check-8-outlined">Laundry Room</label>
+                      </div>
+                    </div>
+
+                    <h4 class="mt-3">Order by</h4>
+                    <div class="mb-3">
+                      <!-- <input type="radio" class="btn-check" name="order1" id="order-none" checked>
+                      <label class="btn btn-outline-secondary" for="order-none">None</label> -->
+                      <input type="radio" class="btn-check" name="order1" id="order-price">
+                      <label class="btn btn-outline-primary" for="order-price">Price</label>
+                      <input type="radio" class="btn-check" name="order1" id="order-rating">
+                      <label class="btn btn-outline-primary" for="order-rating">Rating</label>
+                    </div>
+                    <div id="order-direction">
+                      <input type="radio" class="btn-check" name="order2" id="order-asc">
+                      <label class="btn btn-outline-primary" for="order-asc">Highest to Lowest</label>
+                      <input type="radio" class="btn-check" name="order2" id="order-desc">
+                      <label class="btn btn-outline-primary" for="order-desc">Lowest to Highest</label>
+                    </div>
+
+                    <a class="btn btn-blue mt-3" href="search-results.html">Search</a>
+                  </div>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </section>
+      
+        <div class="album py-5 bg-light">
+          <div class="container">
+            <div class="tab-content search-results mb-3" id="search-tabContent">
+              <!-- Search Data -->
+              <script src="../styles/property-search.js"></script>
+            </div>
+          </div>
+
+          <!-- Page Navigation -->
+          <div class="page-nav bg-light sticky-bottom">
+            <nav aria-label="Page navigation example" class="mt-3">
+              <ul class="mb-3 pagination justify-content-center" id="search-tab" role="tablist">
+                <li class="page-item disabled" role="presentation">
+                  <button class="page-link" id="prev" type="button">Previous</button>
+                </li>
+                <li class="page-item" role="presentation">
+                  <a class="page-link active" id="search-page1" data-bs-toggle="pill" data-bs-target="#search-page1-pane" type="button" role="tab" aria-controls="search-page1" aria-selected="true">1</a>
+                </li>
+                <li class="page-item" role="presentation">
+                  <a class="page-link" id="search-page2" data-bs-toggle="pill" data-bs-target="#search-page2-pane" type="button" role="tab" aria-controls="search-page2" aria-selected="false">2</a>
+                </li>
+                <li class="page-item" role="presentation">
+                  <button class="page-link" id="next" type="button">Next</button>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+    <footer id="footer" class="bar">
+      &copy; 2023
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="../scripts/navbar.js"></script>
+    
+  </body>
+</html>
