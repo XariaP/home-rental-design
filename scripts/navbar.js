@@ -203,7 +203,7 @@ item.classList.add("nav-item");
 item.classList.add("dropdown");
 document.getElementById("nav-button-list").appendChild(item);
 
-createDropDown(item.id, "", false, "person", "Profile");
+createDropDown(item.id, "#", false, "person", "Profile");
 
 var list = document.createElement("ul");
 list.classList.add("dropdown-menu");
