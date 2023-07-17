@@ -1,4 +1,4 @@
-## Comments
+## Notes
 * Taken from Phase 1 of the group project to demonstrate functionality.
 * This interface differs from the final product.  
 * Currently working on refining code and updating the user interface to match the final stage shown in the git repository: home-rental-website-fullstack.  
