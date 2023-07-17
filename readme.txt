@@ -1,3 +1,6 @@
+* Taken from Phase 1 of the group project to demonstrate functionality. This interface differs from the final product.
+* Currently working on refining code and updating the user interface to match the final stage (Git Repository: home-rental-website-fullstack).
+
 Phase 1 Open Source References
 ------------------------------
 Icons and Components: https://getbootstrap.com/docs/5.3/getting-started/introduction/
@@ -12,3 +15,28 @@ Price Details Layout: https://bbbootstrap.com/snippets/bootstrap-product-invoice
 Comment box Layout: https://bbbootstrap.com/snippets/bootstrap-5-total-characters-left-count-comment-section-60933383
 Reservation Booking Layout: https://bbbootstrap.com/snippets/bootstrap-5-flight-booking-forms-34588651
 Comment Section: https://bbbootstrap.com/snippets/bootstrap-recent-comment-section-users-75685715
+
+Group Credits
+-------------
+Xaria Prempeh
+- Navigation bar design & functionality (Linking pages)
+- Notifications popup design and functionality
+- Rental Search page: Filter & property card displays
+- Profile page design: Profile image and user type tag
+- Settings / Profile editor design
+- Reservation & Requests pages: Filter bar design and functionality
+- Comment pages: Collapsible replies design and functionality
+- Ensuring screen responsiveness (Mobile & Desktop): To retain proper alignment and element sizes
+- Login and Signup page design
+- Component color schemes
+
+Semyeong Hong
+- Property listing full page design and content
+- Room reservation form: Design and functionality
+- Room reservation popout confirmation window
+- Profile page design + content
+- Comment page design
+
+Nitin Mahtani
+- Reservations & Requests pages: Summary card design and content
+- Created pages for Reservation cancelling and request approval outcomes
