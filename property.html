@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="CSC309 Winter 2023 Project - Restify">
+    <meta name="author" content="Xaria Prempeh, Nitin Mahtani, Semyeong Hong">
+    <title>Restify - Rental Service</title>
+    <!-- <link href="styles/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> -->
+    <link rel="icon" href="icons/restify-favicon.svg" type="image/svg+xml">
+    <link href="styles/layout.css" rel="stylesheet">
+    
+    <link href="styles/property.css" rel="stylesheet">
+  </head>
+  
+  <body id="page-container">
+    <div id="content-wrap">
+      <!-- Navigation Bar -->
+      <header class="bar sticky-top">
+        <div class="px-3 py-2">
+          <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+              <a href="index.html" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                <img src="icons/restify-logo.svg" width="100px">
+                <p class="logo"> Restify </p>
+              </a>
+
+              <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                <li>
+                  <a href="index.html" class="nav-link selected">
+                    <img class="bi d-block mx-auto mb-1" src="icons/search-selected.svg">
+                    Find Rental
+                  </a>
+                </li>
+                <li>
+                  <a href="reservations.html" class="nav-link">
+                    <img class="bi d-block mx-auto mb-1" src="icons/journal-bookmark.svg">
+                    Reservations
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link btn position-relative" type="button" data-bs-toggle="modal" data-bs-target="#notiModal">
+                    <img class="bi d-block mx-auto mb-1" src="icons/mail.svg">
+                    Notifications
+                    <!-- <span class="position-absolute corner-badge translate-middle badge rounded-pill bg-danger">
+                      2
+                    </span> -->
+                  </a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a type="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img class="bi d-block mx-auto mb-1" src="icons/person.svg">
+                    Renter Profile
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="myprofile.html">Visit Profile</a></li>
+                    <li><a class="dropdown-item" href="index-host.html">Switch to Host</a></li>
+                    <li><a class="dropdown-item" href="edit-profile.html">Settings</a></li>
+                    <li><a class="dropdown-item" href="index-nouser.html">Log Out</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <div class="modal fade" id="notiModal" tabindex="-1" aria-labelledby="notiModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header bar">
+              <img class="modal-icon" src="icons/mail.svg">
+              <h1 class="modal-title fs-5" id="notiModalLabel">My Notifications</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              You have no new notifications.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <main>      
+        <div class = "card-wrapper">
+            <div class = "card">
+              <!-- card left -->
+              <div class = "product-imgs">
+                <div class = "img-display">
+                  <div class = "img-showcase">
+                    <img src = "https://www.rocketmortgage.com/resources-cmsassets/RocketMortgage.com/Article_Images/Large_Images/TypesOfHomes/types-of-homes-hero.jpg" alt = "shoe image">
+                    <img src = "https://cdn.pixabay.com/photo/2017/12/27/14/41/window-3042834__340.jpg" alt = "shoe image">
+                    <img src = "https://cdn.pixabay.com/photo/2018/02/24/17/17/window-3178666_960_720.jpg" alt = "shoe image">
+                    <img src = "https://cdn.pixabay.com/photo/2016/11/14/02/28/apartment-1822409_960_720.jpg" alt = "shoe image">
+                  </div>
+                </div>
+                <div class="text-center">(Select an image below to enlarge)</div>
+                <div class = "img-select">
+                  <div class = "img-item">
+                    <a href = "#" data-id = "1">
+                      <img src = "https://www.rocketmortgage.com/resources-cmsassets/RocketMortgage.com/Article_Images/Large_Images/TypesOfHomes/types-of-homes-hero.jpg" alt = "shoe image">
+                    </a>
+                  </div>
+                  <div class = "img-item">
+                    <a href = "#" data-id = "2">
+                      <img src = "https://cdn.pixabay.com/photo/2017/12/27/14/41/window-3042834__340.jpg" alt = "shoe image">
+                    </a>
+                  </div>
+                  <div class = "img-item">
+                    <a href = "#" data-id = "3">
+                      <img src = "https://cdn.pixabay.com/photo/2018/02/24/17/17/window-3178666_960_720.jpg" alt = "shoe image">
+                    </a>
+                  </div>
+                  <div class = "img-item">
+                    <a href = "#" data-id = "4">
+                      <img src = "https://cdn.pixabay.com/photo/2016/11/14/02/28/apartment-1822409_960_720.jpg" alt = "shoe image">
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <!-- card right -->
+              <div class = "product-content">
+                <h2 class = "product-title">Luxury House</h2>
+                <span class="gold-star">★ ★ ★ ★ </span> <span class="grey-star">★ </span>
+                <div class = "product-price">
+                  <p class = "new-price">Price: <span>$249.00 per night</span></p>
+                </div>
+                <!-- <p> Host</p> -->
+      
+                <div class = "product-detail">
+                  <h2>about this place: </h2>
+                  <p>Enjoy living at its finest with an unforgettable stay at this modern home! Complete with high-end furnishings, modern decor, and abundant natural light. </p>
+                  <p class="text-bold"> Host: <a href="profile-host.html">Alexa Wright</a></p>
+                  <ul>
+                    <li>Address: <span>3990 rue Ontario Ouest, Montreal, QC, H2X 1Y8</span></li>
+                    <li>Availablity: <span>Available</span></li>
+                    <li>Maximum number of guests: <span>8</span></li>
+                    <li>Number of beds: <span>4</span></li>
+                    <li>Number of baths: <span>2</span></li>
+                    <li>Amenities: <span>Gym, Swimming pool, Parking</span></li>
+                    <li>Contact: <span><a href="mailto:ca711207@gmail.com">ca711207@gmail.com</a> / 437-970-1234</span></li>
+                  </ul>
+                </div>
+      
+                <div class = "purchase-info">
+                  <a type = "button" class = "btn" href="./booking.html">Reserve Now</a>
+                  <a type = "button" class = "btn" id="comment" href="./comment-view.html">View Comments</a>
+                </div>
+              </div>
+            </div>
+          </div>
+      </main>
+    </div>
+
+    <footer id="footer" class="bar">
+      &copy; 2023
+    </footer>
+
+    <script src="styles/property-slider.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    
+  </body>
+</html>

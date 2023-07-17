@@ -75,6 +75,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+
               <!-- Example Notification Code -->
               <div class="list-group list-group-flush border-bottom scrollarea">
                 <a href="reservations.html" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
@@ -93,10 +94,7 @@
                 </a>
               </div>
             </div>
-            <!-- <div class="modal-footer">
-              <span>Showing most recent</span>
-              <a type="button" class="btn btn-primary bar" href="notifications.html">View All</a>
-            </div> -->
+              
           </div>
         </div>
       </div>
@@ -120,8 +118,8 @@
                     <div class="input-group mb-3">
                       <label class="input-group-text btn-blue" for="inputGroupSelect01">Location</label>
                       <select class="form-select" id="inputGroupSelect01">
-                        <option selected>Any</option>
-                        <option value="1">Toronto, Canada</option>
+                        <option>Any</option>
+                        <option value="1" selected>Toronto, Canada</option>
                         <option value="2">Houston, Texas</option>
                         <option value="3">Montreal, Canada</option>
                       </select>
@@ -129,16 +127,16 @@
 
                     <label for="customRange2" class="form-label filter-label mt-3">Number of Guests</label>
                     <div class="mb-3">
-                      <input type="radio" class="btn-check" name="numguests" id="guest0" checked>
-                      <label class="btn btn-outline-primary" for="guest0">Any</label>
-                      <input type="radio" class="btn-check" name="numguests" id="guest1">
-                      <label class="btn btn-outline-primary" for="guest1">1</label>
-                      <input type="radio" class="btn-check" name="numguests" id="guest2">
-                      <label class="btn btn-outline-primary" for="guest2">2</label>
-                      <input type="radio" class="btn-check" name="numguests" id="guest3">
-                      <label class="btn btn-outline-primary" for="guest3">3</label>
-                      <input type="radio" class="btn-check" name="numguests" id="guest4">
-                      <label class="btn btn-outline-primary" for="guest4">4+</label>
+                      <input type="radio" class="btn-check" name="numbeds" id="bed0">
+                      <label class="btn btn-outline-primary" for="bed0">Any</label>
+                      <input type="radio" class="btn-check" name="numbeds" id="bed1">
+                      <label class="btn btn-outline-primary" for="bed1">1</label>
+                      <input type="radio" class="btn-check" name="numbeds" id="bed2">
+                      <label class="btn btn-outline-primary" for="bed2">2</label>
+                      <input type="radio" class="btn-check" name="numbeds" id="bed3">
+                      <label class="btn btn-outline-primary" for="bed3">3</label>
+                      <input type="radio" class="btn-check" name="numbeds" id="bed4" checked>
+                      <label class="btn btn-outline-primary" for="bed4">4+</label>
                     </div>
 
                     <label class="form-label filter-label mt-3"> Ammenities Included (Select all that apply)</label>
@@ -181,13 +179,13 @@
                     <div class="mb-3">
                       <!-- <input type="radio" class="btn-check" name="order1" id="order-none" checked>
                       <label class="btn btn-outline-secondary" for="order-none">None</label> -->
-                      <input type="radio" class="btn-check" name="order1" id="order-price">
+                      <input type="radio" class="btn-check" name="order1" id="order-price" checked>
                       <label class="btn btn-outline-primary" for="order-price">Price</label>
                       <input type="radio" class="btn-check" name="order1" id="order-rating">
                       <label class="btn btn-outline-primary" for="order-rating">Rating</label>
                     </div>
                     <div id="order-direction">
-                      <input type="radio" class="btn-check" name="order2" id="order-asc">
+                      <input type="radio" class="btn-check" name="order2" id="order-asc" checked>
                       <label class="btn btn-outline-primary" for="order-asc">Highest to Lowest</label>
                       <input type="radio" class="btn-check" name="order2" id="order-desc">
                       <label class="btn btn-outline-primary" for="order-desc">Lowest to Highest</label>
@@ -197,16 +195,18 @@
                   </div>
                 </div>
               </form>
-
             </div>
           </div>
+          <p class="lead text-muted"><span class="text-bold">Displaying:</span> Toronto, Canada | 4+ Guests</p>
+          <p class="lead text-muted"><span class="text-bold">Order:</span> Highest to Lowest Ratings</p>
+          <a type="button" class="btn btn-secondary" href="index.html">Clear preferences</a>
         </section>
       
         <div class="album py-5 bg-light">
-          <div class="container">
-            <div class="tab-content search-results mb-3" id="search-tabContent">
+          <div class="container mb-3">
+            <div class="tab-content search-results" id="search-tabContent">
               <!-- Search Data -->
-              <script src="styles/property-search.js"></script>
+              <script src="styles/property-search-results.js"></script>
             </div>
           </div>
 
@@ -220,10 +220,7 @@
                 <li class="page-item" role="presentation">
                   <a class="page-link active" id="search-page1" data-bs-toggle="pill" data-bs-target="#search-page1-pane" type="button" role="tab" aria-controls="search-page1" aria-selected="true">1</a>
                 </li>
-                <li class="page-item" role="presentation">
-                  <a class="page-link" id="search-page2" data-bs-toggle="pill" data-bs-target="#search-page2-pane" type="button" role="tab" aria-controls="search-page2" aria-selected="false">2</a>
-                </li>
-                <li class="page-item" role="presentation">
+                <li class="page-item disabled" role="presentation">
                   <button class="page-link" id="next" type="button">Next</button>
                 </li>
               </ul>
@@ -239,6 +236,5 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    
   </body>
 </html>

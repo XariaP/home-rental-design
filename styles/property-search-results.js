@@ -94,7 +94,7 @@ while (count < rental_info.length){
     image.src = rental_info[r].pic;
     imglink.appendChild(image);
 
-    card.innerHTML += "<span class='position-absolute card-rating-badge translate-middle badge rounded-pill'> <img src='../icons/star.svg'>" + rental_info[r].rating +"</span>";
+    card.innerHTML += "<span class='position-absolute card-rating-badge translate-middle badge rounded-pill'> <img src='icons/star.svg'>" + rental_info[r].rating +"</span>";
 
     var card_body = document.createElement("div");
     card_body.className = "card-body";
@@ -142,7 +142,7 @@ while (count < rental_info.length){
     btn.classList.add("btn");
     btn.classList.add("btn-sm");
     btn.classList.add("btn-outline-secondary");
-    btn.innerHTML = "<img src='../icons/heart.svg'>";
+    btn.innerHTML = "<img src='icons/heart.svg'>";
     btn_group.appendChild(btn);
 
     btn = document.createElement("a");

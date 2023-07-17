@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="CSC309 Winter 2023 Project - Restify">
+    <meta name="author" content="Xaria Prempeh, Nitin Mahtani, Semyeong Hong">
+    <title>Restify - Rental Service</title>
+
+    <link rel="icon" href="icons/restify-favicon.svg" type="image/svg+xml">
+    
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/layout.css" rel="stylesheet">
+    <link href="styles/reservationsstyles.css" rel="stylesheet">
+  </head>
+  
+  <body id="page-container"> 
+    <div id="content-wrap">
+      <!-- Navigation Bar -->
+      <header class="bar sticky-top">
+        <div class="px-3 py-2">
+          <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+              <a href="index-host.html" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                <img src="icons/restify-logo.svg" width="100px">
+                <p class="logo"> Restify </p>
+              </a>
+
+              <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                <li>
+                  <a href="index-host.html" class="nav-link">
+                    <img class="bi d-block mx-auto mb-1" src="icons/houses.svg">
+                    My Properties
+                  </a>
+                </li>
+                <li>
+                  <a href="reservations-host.html" class="nav-link selected">
+                    <img class="bi d-block mx-auto mb-1" src="icons/journal-bookmark-selected.svg">
+                    Requests
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link btn position-relative" type="button" data-bs-toggle="modal" data-bs-target="#notiModal">
+                    <img class="bi d-block mx-auto mb-1" src="icons/mail.svg">
+                    Notifications
+                    <span class="position-absolute corner-badge translate-middle badge rounded-pill bg-danger">
+                      2
+                    </span>
+                  </a>
+                </li>
+                <!-- Logged In User -->
+                <li class="nav-item dropdown">
+                  <a type="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img class="bi d-block mx-auto mb-1" src="icons/person.svg">
+                    Host Profile
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="myprofile-host.html">Visit Profile</a></li>
+                    <li><a class="dropdown-item" href="reservations.html">Switch to Renter</a></li>
+                    <li><a class="dropdown-item" href="edit-profile-host.html">Settings</a></li>
+                    <li><a class="dropdown-item" href="index-nouser.html">Log Out</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <nav class="requests-nav">
+          <div class="nav nav-pills" id="nav-tab" role="tablist">
+            <button class="nav-link" id="nav-pending-tab" data-bs-toggle="tab" data-bs-target="#nav-pending" type="button" role="tab" aria-controls="nav-pending" aria-selected="false">Pending</button>
+            <button class="nav-link active" id="nav-approved-tab" data-bs-toggle="tab" data-bs-target="#nav-approved" type="button" role="tab" aria-controls="nav-approved" aria-selected="false">Approved</button>
+            <button class="nav-link" id="nav-completed-tab" data-bs-toggle="tab" data-bs-target="#nav-completed" type="button" role="tab" aria-controls="nav-completed" aria-selected="false">Completed</button>
+            <button class="nav-link" id="nav-expired-tab" data-bs-toggle="tab" data-bs-target="#nav-expired" type="button" role="tab" aria-controls="nav-expired" aria-selected="false">Expired</button>
+            <button class="nav-link" id="nav-canceled-tab" data-bs-toggle="tab" data-bs-target="#nav-canceled" type="button" role="tab" aria-controls="nav-canceled" aria-selected="false">Canceled</button>
+            <button class="nav-link" id="nav-denied-tab" data-bs-toggle="tab" data-bs-target="#nav-denied" type="button" role="tab" aria-controls="nav-denied" aria-selected="false">Denied</button>
+            <button class="nav-link" id="nav-terminated-tab" data-bs-toggle="tab" data-bs-target="#nav-terminated" type="button" role="tab" aria-controls="nav-terminated" aria-selected="false">Terminated</button>
+          </div>
+        </nav>
+      </header>
+
+      <!-- Notification Pop Up -->
+      <div class="modal fade" id="notiModal" tabindex="-1" aria-labelledby="notiModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header bar">
+              <img class="modal-icon" src="icons/mail.svg">
+              <h1 class="modal-title fs-5" id="notiModalLabel">My Notifications</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- Example Notification Code -->
+              <div class="list-group list-group-flush border-bottom scrollarea">
+                <a href="reservations-host.html" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
+                  <div class="d-flex w-100 align-items-center justify-content-between">
+                    <strong class="mb-1">Reservation Request</strong>
+                    <small>Today</small>
+                  </div>
+                  <div class="col-10 mb-1 small">Someone has requested to reserve your House in Toronto, Canada</div>
+                </a>
+                <a href="user-comment-host.html" class="list-group-item list-group-item-action py-3 lh-sm">
+                  <div class="d-flex w-100 align-items-center justify-content-between">
+                    <strong class="mb-1">Leave a comment on Matt Damon</strong>
+                    <small class="text-end">a week ago</small>
+                  </div>
+                  <div class="col-10 mb-1 small">Leave a comment on how Matt Damon was as a renter!</div>
+                </a>
+              </div>
+            </div>
+            <!-- <div class="modal-footer">
+              <span>Showing most recent</span>
+              <a type="button" class="btn btn-primary bar" href="notifications.html">View All</a>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+     <!-- Main Content -->
+      <main class="content">
+        <div class="rescard">
+
+          <div class="tab-content reservation-tabs" id="nav-tabContent">
+            <div class="tab-pane fade empty-list" id="nav-pending" role="tabpanel" aria-labelledby="nav-pending-tab">
+              <!-- <h1 class="fw-light empty-list">Reservation requests</h1> -->
+              <p> No pending reservation/cancellation requests </p>
+            </div>
+
+            <div class="tab-pane fade show active" id="nav-approved" role="tabpanel" aria-labelledby="nav-approved-tab">
+              <h1 class="fw-light">Approved Reservations</h1>
+
+              <div class="card shadow-sm undoflex padded1">
+                <div class="row">
+                  <div class="col-md">
+                    <img class="resimage" src="https://www.rocketmortgage.com/resources-cmsassets/RocketMortgage.com/Article_Images/Large_Images/TypesOfHomes/types-of-homes-hero.jpg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>
+                  </div>
+                  <div class="summaryinfo col-md">
+                    <h3 class="fw-light padded">Jack Sun wants to rent House in Toronto, Canada</h3>
+                    <div class="icons">
+                      <p class="fw-medium padded nonmargin">Status:</p>
+                      <div class="icons padded">
+                        <p class="fw-light nonmargin">Approved!</p>
+                        <svg viewbox="0 0 24 24" xmls="http://www.w3.org/2000/svg" focusable="false">
+                          <g fill="none" fillrule="evenodd">
+                          <path d="M11.0355339,12.863961 L9.62132034,11.4497475 C9.23079605,11.0592232 8.59763107,11.0592232 8.20710678,11.4497475 C7.81658249,11.8402718 7.81658249,12.4734367 8.20710678,12.863961 L10.3284271,14.9852814 C10.5236893,15.1805435 10.7796116,15.2781746 11.0355339,15.2781746 C11.2914562,15.2781746 11.5473785,15.1805435 11.7426407,14.9852814 L15.9852814,10.7426407 C16.3758057,10.3521164 16.3758057,9.71895142 15.9852814,9.32842712 C15.5947571,8.93790283 14.9615921,8.93790283 14.5710678,9.32842712 L11.0355339,12.863961 Z M12,21 C7.02943725,21 3,16.9705627 3,12 C3,7.02943725 7.02943725,3 12,3 C16.9705627,3 21,7.02943725 21,12 C21,16.9705627 16.9705627,21 12,21 Z" fill="#2D333F"></path>
+                          </g>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="icons">
+                      <p class="fw-medium padded3">Address:</p>
+                      <p class="fw-light padded3">123 King Street W</p>
+                    </div>
+                    <div class="icons">
+                      <p class="fw-medium padded2">Details:</p>
+                      <p class="fw-light padded2">2 bedroom 1.5 bathroom</p>
+                    </div>
+      
+                    <div class="icons">
+                      <p class="fw-medium padded2">Number of Guests:</p>
+                      <p class="fw-light padded2">2</p>
+                    </div>
+                    <!-- <p class="fw-light">2 bedroom 1.5 bathroom</p> -->
+      
+                    <div class="icons padded2">
+                      
+                      <svg viewbox="0 0 24 24" xmls="http://www.w3.org/2000/svg" focusable="false">
+                        <g fill="none" fillrule="evenodd">
+                          <path d="M17,5 L19,5 C20.1045695,5 21,5.8954305 21,7 L21,19 C21,20.1045695 20.1045695,21 19,21 L5,21 C3.8954305,21 3,20.1045695 3,19 L3,7 C3,5.8954305 3.8954305,5 5,5 L7,5 L7,4 C7,3.44771525 7.44771525,3 8,3 C8.55228475,3 9,3.44771525 9,4 L9,5 L15,5 L15,4 C15,3.44771525 15.4477153,3 16,3 C16.5522847,3 17,3.44771525 17,4 L17,5 Z M19,9 L19,7 L5,7 L5,9 L19,9 Z M19,11 L5,11 L5,19 L19,19 L19,11 Z" fill="#2D333F"></path>
+      
+                        </g>
+                      </svg>
+                      <p class="fw-medium">Dates requested:</p>
+                      <p class="fw-light padded2">Feb 19-23</p>
+                    </div>
+                    <p>
+                      <a href="profile.html" class="btn btn-primary my-2">View Profile</a>
+                      <a href="reservations-host-terminate.html" class="btn btn-danger my-2">Terminate Reservation</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card shadow-sm undoflex padded1">
+                <div class="row">
+                  <div class="col-md">
+                    <img class="resimage" src="https://cdn.carrot.com/uploads/sites/12149/2012/01/houston-house-2-hero.jpg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>    
+                  </div>
+                  <div class="summaryinfo col-md">
+                    <h3 class="fw-light padded">Maria wants to rent House in Toronto, Canada</h3>
+                    <div class="icons">
+                      <p class="fw-medium padded nonmargin">Status:</p>
+                      <div class="icons padded">
+                        
+                        <p class="fw-light nonmargin">Approved!</p>
+                        <svg viewbox="0 0 24 24" xmls="http://www.w3.org/2000/svg" focusable="false">
+                          <g fill="none" fillrule="evenodd">
+                            <path d="M11.0355339,12.863961 L9.62132034,11.4497475 C9.23079605,11.0592232 8.59763107,11.0592232 8.20710678,11.4497475 C7.81658249,11.8402718 7.81658249,12.4734367 8.20710678,12.863961 L10.3284271,14.9852814 C10.5236893,15.1805435 10.7796116,15.2781746 11.0355339,15.2781746 C11.2914562,15.2781746 11.5473785,15.1805435 11.7426407,14.9852814 L15.9852814,10.7426407 C16.3758057,10.3521164 16.3758057,9.71895142 15.9852814,9.32842712 C15.5947571,8.93790283 14.9615921,8.93790283 14.5710678,9.32842712 L11.0355339,12.863961 Z M12,21 C7.02943725,21 3,16.9705627 3,12 C3,7.02943725 7.02943725,3 12,3 C16.9705627,3 21,7.02943725 21,12 C21,16.9705627 16.9705627,21 12,21 Z" fill="#2D333F"></path>
+      
+                          </g>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="icons">
+                      <p class="fw-medium padded3">Address:</p>
+                      <p class="fw-light padded3">309 JackSun Street</p>
+                    </div>
+                    <div class="icons">
+                      <p class="fw-medium padded2">Details:</p>
+                      <p class="fw-light padded2">4 bedroom 4.5 bathroom</p>
+                    </div>
+      
+                    <div class="icons">
+                                  <p class="fw-medium padded2">Number of Guests:</p>
+                                  <p class="fw-light padded2">3</p>
+                                </div>
+                    <!-- <p class="fw-light">2 bedroom 1.5 bathroom</p> -->
+      
+                    <div class="icons padded2">
+                      
+                      <svg viewbox="0 0 24 24" xmls="http://www.w3.org/2000/svg" focusable="false">
+                        <g fill="none" fillrule="evenodd">
+                          <path d="M17,5 L19,5 C20.1045695,5 21,5.8954305 21,7 L21,19 C21,20.1045695 20.1045695,21 19,21 L5,21 C3.8954305,21 3,20.1045695 3,19 L3,7 C3,5.8954305 3.8954305,5 5,5 L7,5 L7,4 C7,3.44771525 7.44771525,3 8,3 C8.55228475,3 9,3.44771525 9,4 L9,5 L15,5 L15,4 C15,3.44771525 15.4477153,3 16,3 C16.5522847,3 17,3.44771525 17,4 L17,5 Z M19,9 L19,7 L5,7 L5,9 L19,9 Z M19,11 L5,11 L5,19 L19,19 L19,11 Z" fill="#2D333F"></path>
+      
+                        </g>
+                      </svg>
+                      <p class="fw-medium">Dates booked:</p>
+                      <p class="fw-light padded2">Mar 13-23</p>
+                    </div>
+      
+                    <p>
+                      <a href="profile.html" class="btn btn-primary my-2">View Profile</a>
+                      <a href="reservations-host-terminate.html" class="btn btn-danger my-2">Terminate Reservation</a>
+                    </p>
+      
+                  </div>
+                
+                </div>
+                
+               
+              </div>
+    
+            </div>
+
+            <div class="tab-pane fade" id="nav-completed" role="tabpanel" aria-labelledby="nav-completed-tab">
+              <h1 class="fw-light">Past Reservations</h1>
+
+              <div class="card shadow-sm undoflex padded1">
+                <div class="row">
+                  <div class="col-md">
+                    <img class="resimage" src="https://cdn.carrot.com/uploads/sites/12149/2012/01/houston-house-2-hero.jpg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>
+                  </div>
+                  <div class="summaryinfo col-md">
+                    <h3 class="fw-light padded">Matt Damon rented House in Houston, Texas</h3>
+                    <div class="icons">
+                      <p class="fw-medium padded nonmargin">Status:</p>
+                      <div class="icons padded">
+                        
+                        <p class="fw-light nonmargin">Completed</p>
+                        
+                        <svg viewbox="0 0 24 24" xmls="http://www.w3.org/2000/svg" focusable="false">
+                          <g fill="none" fillrule="evenodd">
+                            <path d="M11.0355339,12.863961 L9.62132034,11.4497475 C9.23079605,11.0592232 8.59763107,11.0592232 8.20710678,11.4497475 C7.81658249,11.8402718 7.81658249,12.4734367 8.20710678,12.863961 L10.3284271,14.9852814 C10.5236893,15.1805435 10.7796116,15.2781746 11.0355339,15.2781746 C11.2914562,15.2781746 11.5473785,15.1805435 11.7426407,14.9852814 L15.9852814,10.7426407 C16.3758057,10.3521164 16.3758057,9.71895142 15.9852814,9.32842712 C15.5947571,8.93790283 14.9615921,8.93790283 14.5710678,9.32842712 L11.0355339,12.863961 Z M12,21 C7.02943725,21 3,16.9705627 3,12 C3,7.02943725 7.02943725,3 12,3 C16.9705627,3 21,7.02943725 21,12 C21,16.9705627 16.9705627,21 12,21 Z" fill="#2D333F"></path>
+      
+                          </g>
+                        </svg>
+                        
+                      </div>
+                    </div>
+                    <div class="icons">
+                      <p class="fw-medium padded3">Address:</p>
+                      <p class="fw-light padded3">309 JackSun Street</p>
+                    </div>
+                    <div class="icons">
+                      <p class="fw-medium padded2">Details:</p>
+                      <p class="fw-light padded2">4 bedroom 4.5 bathroom</p>
+                    </div>
+      
+                    <div class="icons">
+                                  <p class="fw-medium padded2">Number of Guests:</p>
+                                  <p class="fw-light padded2">2</p>
+                                </div>
+                    <!-- <p class="fw-light">2 bedroom 1.5 bathroom</p> -->
+      
+                    <div class="icons padded2">
+                      
+                      <svg viewbox="0 0 24 24" xmls="http://www.w3.org/2000/svg" focusable="false">
+                        <g fill="none" fillrule="evenodd">
+                          <path d="M17,5 L19,5 C20.1045695,5 21,5.8954305 21,7 L21,19 C21,20.1045695 20.1045695,21 19,21 L5,21 C3.8954305,21 3,20.1045695 3,19 L3,7 C3,5.8954305 3.8954305,5 5,5 L7,5 L7,4 C7,3.44771525 7.44771525,3 8,3 C8.55228475,3 9,3.44771525 9,4 L9,5 L15,5 L15,4 C15,3.44771525 15.4477153,3 16,3 C16.5522847,3 17,3.44771525 17,4 L17,5 Z M19,9 L19,7 L5,7 L5,9 L19,9 Z M19,11 L5,11 L5,19 L19,19 L19,11 Z" fill="#2D333F"></path>
+      
+                        </g>
+                      </svg>
+                      <p class="fw-medium">Dates booked:</p>
+                      <p class="fw-light padded2">Jan 13-23</p>
+                    </div>
+      
+                    <p>
+                      <a href="profile.html" class="btn btn-primary my-2">View Profile</a>
+                      <a href="user-comment-view.html" class="btn btn-secondary my-2">Leave comment</a>
+                    </p>
+      
+                  </div>
+                
+                </div>
+              
+                
+              
+              </div>
+            </div>
+
+            <div class="tab-pane fade empty-list" id="nav-expired" role="tabpanel" aria-labelledby="nav-expired-tab">
+              <p>You have no expired requests</p>
+            </div>
+
+            <div class="tab-pane fade empty-list" id="nav-canceled" role="tabpanel" aria-labelledby="nav-canceled-tab">
+              <p>You have no canceled reservations</p>
+            </div>
+
+            <div class="tab-pane fade empty-list" id="nav-denied" role="tabpanel" aria-labelledby="nav-denied-tab">
+              <p>You denied no reservations</p>
+            </div>
+
+            <div class="tab-pane fade empty-list" id="nav-terminated" role="tabpanel" aria-labelledby="nav-terminated-tab">
+              <p>You terminated no reservations</p>
+            </div>
+          </div>
+          
+        </div>
+        
+      </main>
+    </div>
+
+    <footer id="footer" class="bar">
+      &copy; 2023
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    
+  </body>
+</html>

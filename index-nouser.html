@@ -3,29 +3,60 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Winter 2023 Project - Restify (Updated)">
-    <meta name="author" content="Xaria Prempeh">
+    <meta name="description" content="CSC309 Winter 2023 Project - Restify">
+    <meta name="author" content="Xaria Prempeh, Nitin Mahtani, Semyeong Hong">
     <title>Restify - Rental Service</title>
-    <!-- <link href="../styles/bootstrap.min.css" rel="stylesheet"> -->
+    
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> -->
-    <link rel="icon" href="../icons/restify-favicon.svg" type="image/svg+xml">
-    <link href="../styles/layout.css" rel="stylesheet">
+    <link rel="icon" href="icons/restify-favicon.svg" type="image/svg+xml">
+    <link href="styles/layout.css" rel="stylesheet">
     
   </head>
   
   <body id="page-container"> 
     <div id="content-wrap">
+
       <!-- Navigation Bar -->
       <header class="bar sticky-top">
         <div class="px-3 py-2">
           <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-              <a href="index-guest.html" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-                <img src="../icons/restify-logo.svg" width="100px">
+              <a href="#" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                <img src="icons/restify-logo.svg" width="100px">
                 <p class="logo"> Restify </p>
               </a>
 
-              <ul id="nav-button-list" class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+              <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                <li>
+                  <a href="index-nouser.html" class="nav-link selected">
+                    <img class="bi d-block mx-auto mb-1" src="icons/search-selected.svg">
+                    Find Rental
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signUpModal">
+                    <img class="bi d-block mx-auto mb-1" src="icons/journal-bookmark.svg">
+                    Reservations
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signUpModal">
+                    <img class="bi d-block mx-auto mb-1" src="icons/mail.svg">
+                    Notifications
+                  </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a type="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img class="bi d-block mx-auto mb-1" src="icons/person.svg">
+                    Guest
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark">
+                    <!-- <li><a class="dropdown-item" href="log-in.html">Log In</a></li> -->
+                    <li><a class="dropdown-item" href="log-in.html">Log In</a></li>
+                    <li><a class="dropdown-item" href="sign-up.html">Sign Up</a></li>
+                  </ul>
+                </li>
 
               </ul>
             </div>
@@ -34,41 +65,24 @@
       </header>
 
       <!-- Notification Pop Up -->
-      <div class="modal fade" id="notiModal" tabindex="-1" aria-labelledby="notiModalLabel" aria-hidden="true">
+      <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-header bar">
-              <img class="modal-icon" src="../icons/mail.svg">
-              <h1 class="modal-title fs-5" id="notiModalLabel">My Notifications</h1>
+              <h1 class="modal-title fs-5" id="signUpModalLabel">Wait a minute...</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <!-- Example Notification Code -->
-              <div class="list-group list-group-flush border-bottom scrollarea">
-                <a href="reservations.html" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
-                  <div class="d-flex w-100 align-items-center justify-content-between">
-                    <strong class="mb-1">Reservation Approved!</strong>
-                    <small>Today</small>
-                  </div>
-                  <div class="col-10 mb-1 small">Your reservation for House in Toronto, Canada has been approved!</div>
-                </a>
-                <a href="reservations.html#pending-reservations" class="list-group-item list-group-item-action py-3 lh-sm">
-                  <div class="d-flex w-100 align-items-center justify-content-between">
-                    <strong class="mb-1">Reservation request pending</strong>
-                    <small class="text-end">2 days ago</small>
-                  </div>
-                  <div class="col-10 mb-1 small">Your reservation is under review. Please wait 3-4 days for approval.</div>
-                </a>
-              </div>
+              You are not logged in. Please create an account to proceed.
             </div>
-            <!-- <div class="modal-footer">
-              <span>Showing most recent</span>
-              <a type="button" class="btn btn-primary bar" href="notifications.html">View All</a>
-            </div> -->
+            <div class="modal-footer">
+              <a type="button" class="btn btn-secondary" href="log-in.html">Log In</a>
+              <a type="button" class="btn btn-primary" href="sign-up.html">Sign Up</a>
+            </div>
           </div>
         </div>
       </div>
-
+      
       <!-- Main Content -->
       <main class="content">
         <section class="py-5 text-center container">
@@ -97,16 +111,16 @@
 
                     <label for="customRange2" class="form-label filter-label mt-3">Number of Guests</label>
                     <div class="mb-3">
-                      <input type="radio" class="btn-check" name="numguests" id="guest0" checked>
-                      <label class="btn btn-outline-primary" for="guest0">Any</label>
-                      <input type="radio" class="btn-check" name="numguests" id="guest1">
-                      <label class="btn btn-outline-primary" for="guest1">1</label>
-                      <input type="radio" class="btn-check" name="numguests" id="guest2">
-                      <label class="btn btn-outline-primary" for="guest2">2</label>
-                      <input type="radio" class="btn-check" name="numguests" id="guest3">
-                      <label class="btn btn-outline-primary" for="guest3">3</label>
-                      <input type="radio" class="btn-check" name="numguests" id="guest4">
-                      <label class="btn btn-outline-primary" for="guest4">4+</label>
+                      <input type="radio" class="btn-check" name="numbeds" id="bed0" checked>
+                      <label class="btn btn-outline-primary" for="bed0">Any</label>
+                      <input type="radio" class="btn-check" name="numbeds" id="bed1">
+                      <label class="btn btn-outline-primary" for="bed1">1</label>
+                      <input type="radio" class="btn-check" name="numbeds" id="bed2">
+                      <label class="btn btn-outline-primary" for="bed2">2</label>
+                      <input type="radio" class="btn-check" name="numbeds" id="bed3">
+                      <label class="btn btn-outline-primary" for="bed3">3</label>
+                      <input type="radio" class="btn-check" name="numbeds" id="bed4">
+                      <label class="btn btn-outline-primary" for="bed4">4+</label>
                     </div>
 
                     <label class="form-label filter-label mt-3"> Ammenities Included (Select all that apply)</label>
@@ -169,12 +183,12 @@
             </div>
           </div>
         </section>
-      
+
         <div class="album py-5 bg-light">
-          <div class="container">
-            <div class="tab-content search-results mb-3" id="search-tabContent">
+          <div class="container mb-3">
+            <div class="tab-content search-results" id="search-tabContent">
               <!-- Search Data -->
-              <script src="../styles/property-search.js"></script>
+              <script src="styles/property-search.js"></script>
             </div>
           </div>
 
@@ -207,7 +221,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <script src="../scripts/navbar.js"></script>
     
   </body>
 </html>

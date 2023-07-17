@@ -1,0 +1,145 @@
+@import "bootstrap.min.css";
+
+/* h1 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    justify-content: center;
+    align-items: center;
+} */
+
+h6 {
+    margin: 0 0 0.1rem 0;
+}
+
+
+svg {
+    margin-top: 0.2rem;
+    height: 1.2rem;
+    width: auto;
+}
+
+.no {
+    margin-top: 0;
+    height: 1.2rem;
+    width: auto;
+    display: block;
+}
+.bold {
+    font-weight: 700;
+}
+.nonmargin {
+    margin: 0 0 0.1rem 0;
+}
+.icons {
+    display: flex;
+    flex-direction: row;
+}
+.resimage {
+    
+    object-fit: cover;
+    border-radius: 4px;
+    width: 100%;
+    height: 100%;
+}
+.undoflex {
+    flex-direction: row;
+}
+.slightpad {
+    margin-left: 0.2rem;
+    /* padding-left: 0.3rem; */
+}
+.padded3 {
+    justify-content: center;
+    align-items: center;
+    padding-left: 1rem;
+    padding-top: 0.75rem;
+}
+
+.padded2 {
+    padding-left: 1rem;
+}
+
+.padded1 {
+    margin-top: 4rem;
+}
+
+.padded {
+    justify-content: center;
+    align-items: center;
+    padding-left: 1rem;
+    padding-top: 0.25rem;
+}
+
+.newheading {
+    padding-top: 3rem;
+}
+
+.rescard {
+    background: #fff;
+    border-bottom: 0.0625rem solid #d8d9db;
+    border-bottom-width: 0.0625rem;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(216, 217, 219);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    text-align: center;
+}
+
+.summaryinfo {
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
+    /* width: max-content; */
+}
+
+.requests-nav {
+    background-color: #fff;
+    border: #d8d9db solid 1px;
+}
+
+@media (max-width:767px) {
+    .requests-nav .nav-pills {
+        display: flex;
+        justify-content: space-evenly;
+    }   
+}
+
+.requests-nav .nav-pills {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}   
+
+.nav-pills .nav-link.active {
+    background-color: rgba(0, 149, 255, 0.818)!important;
+    /* background-color: rgba(89, 20, 201, 0.818)!important; */
+    color: #fff!important;
+    /* color: black!important; */
+}
+
+.nav-pills .nav-link:hover {
+    /* background-color: rgba(211, 211, 211, 0.463); */
+    background-color: rgba(211, 211, 211, 0.733);
+    color: black;
+}
+
+.nav-pills .nav-link {
+    background-color: rgba(211, 211, 211, 0.232);
+}
+
+.empty-list {
+    margin: auto;
+}
+
+.tab-pane {
+    width: 100%;
+}

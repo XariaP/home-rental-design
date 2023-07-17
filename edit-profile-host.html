@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="CSC309 Winter 2023 Project - Restify">
+    <meta name="author" content="Xaria Prempeh, Nitin Mahtani, Semyeong Hong">
+    <title>Restify - Rental Service</title>
+
+    <link rel="icon" href="icons/restify-favicon.svg" type="image/svg+xml">
+    <link href="styles/layout.css" rel="stylesheet">
+  </head>
+  
+  <body id="page-container"> 
+    <div id="content-wrap">
+    
+      <!-- Navigation Bar -->
+      <header class="bar sticky-top">
+        <div class="px-3 py-2">
+          <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+              <a href="index-host.html" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                <img src="icons/restify-logo.svg" width="100px">
+                <p class="logo"> Restify </p>
+              </a>
+
+              <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                <li>
+                  <a href="index-host.html" class="nav-link">
+                    <img class="bi d-block mx-auto mb-1" src="icons/houses.svg">
+                    My Properties
+                  </a>
+                </li>
+                <li>
+                  <a href="reservations-host.html" class="nav-link">
+                    <img class="bi d-block mx-auto mb-1" src="icons/journal-bookmark.svg">
+                    Requests
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link" type="button" data-bs-toggle="modal" data-bs-target="#notiModal">
+                    <img class="bi d-block mx-auto mb-1" src="icons/mail.svg">
+                    Notifications
+                  </a>
+                </li>
+                
+                <li class="nav-item dropdown">
+                  <a type="button" class="nav-link selected dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img class="bi d-block mx-auto mb-1" src="icons/person-selected.svg">
+                    Profile Editor
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="myprofile-host.html">Visit Profile</a></li>
+                    <li><a class="dropdown-item" href="edit-profile.html">Switch to Renter</a></li>
+                    <li><a class="dropdown-item" href="edit-profile-host.html">Settings</a></li>
+                    <li><a class="dropdown-item" href="index-nouser.html">Log Out</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Notification Pop Up -->
+      <div class="modal fade" id="notiModal" tabindex="-1" aria-labelledby="notiModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header bar">
+              <img class="modal-icon" src="icons/mail.svg">
+              <h1 class="modal-title fs-5" id="notiModalLabel">My Notifications</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              You have no new notifications.
+            </div>
+            <!-- <div class="modal-footer"> -->
+              <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button> -->
+            <!-- </div> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <main class="content">
+        <div class="profile">
+
+        <div class="float-md-start mx-3">
+          <div class="avatar-center">
+            <img class="avatar" src="./icons/profile-beach.svg">
+          </div>
+
+          <div class="d-flex justify-content-center mt-3">
+            <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <button class="nav-link active" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
+              <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-photo" type="button" role="tab" aria-controls="v-pills-photo" aria-selected="false">Photo</button>
+              <button class="nav-link" id="v-pills-password-tab" data-bs-toggle="pill" data-bs-target="#v-pills-password" type="button" role="tab" aria-controls="v-pills-password" aria-selected="false">Password</button>
+              <a class="btn btn-light float-end" href="myprofile-host.html">Exit</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="v-pills-tabContent">
+          <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
+    
+            <form class="row g-3 mt-1 needs-validation" novalidate>
+              <h4>Basic Information</h4>
+              <div class="col-md-4">
+                <label for="validationCustom01" class="form-label">First name</label>
+                <input type="text" class="form-control" id="validationCustom01" value="Alexa" required>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="validationCustom02" class="form-label">Last name</label>
+                <input type="text" class="form-control" id="validationCustom02" value="Wright" required>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="validationCustomUsername" class="form-label">Username</label>
+                <div class="input-group has-validation">
+                  <span class="input-group-text btn-blue" id="inputGroupPrepend">@</span>
+                  <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required value="AWright">
+                  <div class="invalid-feedback">
+                    Please choose a username.
+                  </div>
+                </div>
+              </div>
+    
+              <h4>Contact Information</h4>
+              <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Email</label>
+                <input type="email" class="form-control" id="inputEmail4" value="host@restify.com">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="phonenum" class="form-label">Phone #</label>
+                <input type="text" class="form-control" id="phonenum" placeholder="xxx-xxx-xxxx">
+              </div>
+
+              <div class="col-12">
+                <a class="btn btn-primary" type="submit" href="myprofile-host.html">Save Changes</a>
+              </div>
+            </form>
+          </div>
+
+          <div class="tab-pane fade" id="v-pills-photo" role="tabpanel" aria-labelledby="v-pills-photo-tab" tabindex="0">
+            <form class="row g-3 mt-1 needs-validation" novalidate>
+              <!-- <div id="edit-photo"> -->
+                <!-- <label class="input-group-text btn-blue sm-avatar-edit mb-3" for="userphotoFile">Profile Photo</label> -->
+              <h4>Profile Photo</h4>
+              <div class="input-group mb-3">
+                <!-- <label class="input-group-text btn-blue lg-avatar-edit" for="userphotoFile">Profile Photo</label> -->
+                <input type="file" class="form-control" id="userphotoFile">
+                <button class="btn btn-outline-danger lg-avatar-edit" type="reset" id="inputGroupFileAddon01">Remove</button>
+              </div>
+                <!-- <button class="btn btn-outline-danger sm-avatar-edit" type="reset" id="inputGroupFileAddon02">Remove Photo</button> -->
+              <!-- </div> -->
+              <div class="col-12">
+                <a class="btn btn-primary" type="submit" href="myprofile-host.html">Upload Photo</a>
+              </div>
+            </form>
+          </div>
+
+          <div class="tab-pane fade" id="v-pills-password" role="tabpanel" aria-labelledby="v-pills-password-tab" tabindex="0">
+            <form class="row g-3 mt-1 needs-validation" novalidate>   
+              <h4>Account Information</h4>
+              <div class="col-md-4">
+                <label for="inputPassword1" class="form-label">Old Password</label>
+                <input type="password" class="form-control" id="inputPassword1">
+              </div>
+              <div class="col-md-4">
+                <label for="inputPassword2" class="form-label">New Password</label>
+                <input type="password" class="form-control" id="inputPassword2">
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="inputPassword3" class="form-label">Retype New Password</label>
+                <input type="password" class="form-control" id="inputPassword3">
+              </div>
+              <div class="col-12">
+                <a class="btn btn-primary" type="submit" href="myprofile-host.html">Change Password</a>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+        </div>
+
+      </main>
+
+    <footer id="footer" class="bar">
+      &copy; 2023
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
